@@ -1,0 +1,1 @@
+logic input a;
