@@ -1,1 +1,2 @@
-logic input a;
+logic input [N]a;
+logic input [N]b;
