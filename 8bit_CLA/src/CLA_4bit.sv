@@ -1,6 +1,7 @@
 module CLA_4bit (
     input  logic [3:0] A,
     input  logic [3:0] B,
+    input  logic Cin,
     output logic [4:0] Sum // 5-bits to avoid over/under flow
 );
 
@@ -57,21 +58,19 @@ module CLA_4bit (
     // Slice 0 does not need carry computation - Cin is the carry coming from outside
 
     //Slice 1
-    assign C[0] = 1'b0;
+    assign C[0] = Cin;
     CLA_carry_logic_0 cl0 (.p0(P[0]), .g0(G[0]), .ci0(1'b0), .co(C[1]));
 
     //Slice 2
     CLA_carry_logic_1 cl1 (.p0(P[0]), .g0(G[0]), .p1(P[1]), .g1(G[1]), .ci0(1'b0), .co(C[2]));
-
-    // Slice 4 generates the last carry out that is the fifth sum bit to avoid over/underflow
-    CLA_carry_logic_3 cl3 (.p0(P[0]), .g0(G[0]), .p1(P[1]), .g1(G[1]), .p2(P[2]), .g2(G[2]), 
-                           .p3(P[3]), .g3(G[3]), .ci0(1'b0), .co(C[4]));
                            
     // Slice 3
     CLA_carry_logic_2 cl2 (.p0(P[0]), .g0(G[0]), .p1(P[1]), .g1(G[1]), .p2(P[2]), .g2(G[2]),
                             .ci0(1'b0), .co(C[3]));
-
-
+    
+    // Slice 4 generates the last carry out that is the fifth sum bit to avoid over/underflow
+    CLA_carry_logic_3 cl3 (.p0(P[0]), .g0(G[0]), .p1(P[1]), .g1(G[1]), .p2(P[2]), .g2(G[2]), 
+                           .p3(P[3]), .g3(G[3]), .ci0(1'b0), .co(C[4]));
     
 
 endmodule
