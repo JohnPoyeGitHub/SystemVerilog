@@ -6,8 +6,7 @@ module nand5_delay (
     input  logic in5,
     output logic out
 );
-  //TODO: Complete the code
-  logic u1_out, u1_out_inv;
+    logic u1_out, u1_out_inv;
     logic u2_out, u2_out_inv;
 
     nand3_delay u1 (.a(in1), .b(in2), .c(in3), .y(u1_out));

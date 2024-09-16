@@ -3,5 +3,18 @@ module generate_logic (
     input  logic b,
     output logic g
 );
-  // TODO: Complete the code
+  logic nand_ab;
+
+  nand2_delay u1(
+    .a(a),
+    .b(b),
+    .y(nand_ab)
+  );
+
+  nand2_delay  u2(
+    .a(nand_ab),
+    .b(nand_ab),
+    .y(g)
+    );
+
 endmodule
