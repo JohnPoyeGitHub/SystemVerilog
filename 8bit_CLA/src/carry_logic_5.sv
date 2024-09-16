@@ -15,4 +15,9 @@ module carry_logic_5 (
     output logic carry_out
 );
   //TODO: Complete the code
+
+logic out1, out2, out3, out4, out5;
+
+nand5_delay
+
 endmodule
