@@ -1,4 +1,4 @@
-module CLA_carry_logic_3 (
+module carry_logic_3 (
     input logic p0,
     input logic g0,
     input logic p1,
@@ -22,48 +22,48 @@ module CLA_carry_logic_3 (
 
 
 nand5_delay u1 (
-	.a(p0), 
-	.b(p1), 
-    .c(p2),
-    .d(p3),
-    .e(ci0),
-	.y(nand1_out)
+	.in1(p0), 
+	.in2(p1), 
+    .in3(p2),
+    .in4(p3),
+    .in5(ci0),
+	.out(nand1_out)
 	); 
 
 nand4_delay u2 (
-	.a(p1), 
-	.b(p2), 
-    .c(p3),
-    .d(g0),
-	.y(nand2_out)
+	.in1(p1), 
+	.in2(p2), 
+    .in3(p3),
+    .in4(g0),
+	.out(nand2_out)
 	); 
 
 nand3_delay u3 (
-	.a(p3), 
-	.b(p2), 
-    .c(g1),
-	.y(nand3_out)
+	.in1(p3), 
+	.in2(p2), 
+    .in3(g1),
+	.out(nand3_out)
 	); 
 
 nand2_delay u4 (
-	.a(p3), 
-	.b(g2), 
-	.y(nand4_out)
+	.in1(p3), 
+	.in2(g2), 
+	.out(nand4_out)
 	); 
 
 nand2_delay u5 (
-	.a(g3), 
-	.b(g3), 
-	.y(nand5_out)
+	.in1(g3), 
+	.in2(g3), 
+	.out(nand5_out)
 	); 
 
 nand5_delay u6 (
-	.a(nand1_out), 
-	.b(nand2_out), 
-    .c(nand3_out), 
-    .d(nand4_out),
-    .e(nand5_out),
-	.y(co)
+	.in1(nand1_out), 
+	.in2(nand2_out), 
+    .in3(nand3_out), 
+    .in4(nand4_out),
+    .in5(nand5_out),
+	.out(co)
 	); 
 
 endmodule

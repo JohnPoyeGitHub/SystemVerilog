@@ -16,8 +16,80 @@ module carry_logic_5 (
 );
   //TODO: Complete the code
 
-logic out1, out2, out3, out4, out5;
+logic nand1_out;  
+logic nand2_out;  
+logic nand3_out;  
+logic nand4_out;  
+logic nand5_out; 
+logic nand6_out;
+logic nand7_out;
 
-nand5_delay
+nand2_delay u1 (
+  .in1(g5),
+  .in2(g5),
+  .out(nand1_out)
+);
+
+nand2_delay u2(
+  .in1(p5),
+  .in2(g4),
+  .out(nand2_out)
+);
+
+nand3_delay u3(
+  .in1(p5),
+  .in2(p4),
+  .in3(g3),
+  .out(nand3_out)
+);
+
+nand4_delay  u4(
+  .in1(p5),
+  .in2(p4),
+  .in3(p3),
+  .in4(g2),
+  .out(nand4_out)
+  );
+
+nand5_delay  u5(
+  .in1(p5),
+  .in2(p4),
+  .in3(p3),
+  .in4(p2),
+  .in5(g1),
+  .out(nand5_out)
+  );
+
+nand6_delay   u6(
+  .in1(p5),
+  .in2(p4),
+  .in3(p3),
+  .in4(p2),
+  .in5(p1),
+  .in6(g0),
+  .out(nand6_out)
+  );
+
+nand7_delay    u7(
+  .in1(p5),
+  .in2(p4),
+  .in3(p3),
+  .in4(p2),
+  .in5(p1),
+  .in6(p0),
+  .in7(carry_in)
+  .out(nand7_out)
+  );
+
+nand7_delay     u8(
+  .in1(nand1_out),
+  .in2(nand2_out),
+  .in3(nand3_out),
+  .in4(nand4_out),
+  .in5(nand5_out),
+  .in6(nand6_out),
+  .in7(nand7_out),
+  .out(carry_out)
+  );
 
 endmodule

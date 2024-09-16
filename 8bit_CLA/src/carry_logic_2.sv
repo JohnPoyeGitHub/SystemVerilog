@@ -16,38 +16,38 @@ module carry_logic_2 (
 
 
     nand4_delay u1 (
-        .a(p0), 
-        .b(p1), 
-        .c(p2),
-        .d(carry_in0),
-        .y(nand1)
+        .in1(p0), 
+        .in2(p1), 
+        .in3(p2),
+        .in4(carry_in0),
+        .out(nand1)
     ); 
 
     nand3_delay u2 (
-        .a(p2), 
-        .b(p1), 
-        .c(g0),
-        .y(nand2)
+        .in1(p2), 
+        .in2(p1), 
+        .in3(g0),
+        .out(nand2)
     ); 
 
     nand2_delay u3 (
-        .a(p2), 
-        .b(g1), 
-        .y(nand3)
+        .in1(p2), 
+        .in2(g1), 
+        .out(nand3)
     ); 
 
     nand2_delay u4 (
-        .a(g2), 
-        .b(g2), 
-        .y(nand4)
+        .in1(g2), 
+        .in2(g2), 
+        .out(nand4)
     ); 
 
     nand4_delay u5 (
-        .a(nand1), 
-        .b(nand2), 
-        .c(nand3), 
-        .d(nand4),
-        .y(carry_out)
+        .in1(nand1), 
+        .in2(nand2), 
+        .in3(nand3), 
+        .in4(nand4),
+        .out(carry_out)
     ); 
 
 endmodule

@@ -1,12 +1,12 @@
 `timescale 1ns / 1ps
 
 module nand2_delay ( 
-	input logic a,   // First input 
-	input logic b,   // Second input 
-	output logic y   // Output 
+	input logic in1,   // First input 
+	input logic in2,   // Second input 
+	output logic out   // Output 
 	); 
 
 // Continuous assignment for XOR gate 
-    assign #1ns y = ~(a & b);  // Perform the XOR operation after the delay
+    assign #1ns out = ~(in1 & in2);  // Perform the XOR operation after the delay
 	
 endmodule
