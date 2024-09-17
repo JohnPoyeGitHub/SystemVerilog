@@ -1,4 +1,21 @@
 ./src/carry_logic_0.sv
 ./src/carry_logic_1.sv
-
-TODO: add the rest of your src files here (not the testbench)
+./src/carry_logic_2.sv
+./src/carry_logic_3.sv
+./src/carry_logic_4.sv
+./src/carry_logic_5.sv
+./src/carry_logic_6.sv
+./src/carry_logic_7.sv
+./src/cla_8bit.sv
+./src/generate_logic.sv
+./src/nand2_delay.sv
+./src/nand3_delay.sv
+./src/nand4_delay.sv
+./src/nand5_delay.sv
+./src/nand6_delay.sv
+./src/nand7_delay.sv
+./src/nand8_delay.sv
+./src/nand9_delay.sv
+./src/propagate_logic.sv
+./src/sum_logic.sv
+./src/xor2_delay.sv
