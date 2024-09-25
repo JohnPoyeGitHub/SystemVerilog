@@ -7,6 +7,6 @@ module nand2_delay (
 	); 
 
 // Continuous assignment for NAND gate 
-    assign #1ns y = ~(a & b);  // Perform the NAND operation after the delay
+    assign #0.1ns y = ~(a & b);  // Perform the NAND operation after the delay
 	
 endmodule
