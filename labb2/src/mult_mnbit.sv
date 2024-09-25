@@ -19,8 +19,33 @@ logic co0, co1, co2;
             end
         end
     endgenerate
-
     
+    assign prod[0] = prod_terms[0][0];
+    rca_nbit #M u1(
+        .a({0,prod_terms[]}),
+    )
+    logic [M-1:0][N-1:0] sum, [N-1:0] carry;
+    
+
+    gen i;
+    generate
+        for (i = 1; i < N-1; i++) begin : loopa
+            rca_nbit #(M) u_rca (
+                .a(prod_terms [i]),
+                .b(prod_terms [i+1]),
+                .cin(carry [i]),
+                .sum(sum [i]),
+                .co(carry [i+1])
+            );
+
+        end
+    endgenerate
+
+    assign  prod[M+N-1: M] = sum[N-2];
+
+
+
+
     
     // logic [N-1:0] A0, B0, Sum0, A1, B1, Sum1, A2, B2, Sum2;
     // logic co0, co1, co2; // the three carry-outs from the three adders
