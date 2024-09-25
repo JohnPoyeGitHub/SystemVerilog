@@ -5,9 +5,6 @@ module mult_mnbit #(parameter M = 4, parameter N = 4)(
 );
 logic [N+M:0] C;
 
-    // assign C[0] =cin;
-    
-    // Generate block to create the N full adders
     genvar i, j;
     generate
         for (i = 0; i < M; i++) begin : B_loop
