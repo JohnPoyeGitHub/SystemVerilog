@@ -8,18 +8,18 @@ logic [N+M:0] C;
     // assign C[0] =cin;
     
     // Generate block to create the N full adders
-    genvar i;
+    genvar i, j;
     generate
-        for (i = 0; i < N; i++) begin : gen_full_adders
-            fa_delay fa (
-                .a(A[i]),
-                .b(B[i]),
-                .sum(Sum[i]),
-                .cout(C[i+1])
+        for (i = 0; i < M; i++) begin : B_loop
+            for (j = 0; j < N; j++) begin : A_loop
+                and2_delay u_and (
+                .a(a[i]),
+                .b(b[j]),
+                .y(prod_terms [j] [i])
             );
+            end
         end
     endgenerate
 
-    assign co = C[N];
-//
+    
 endmodule
