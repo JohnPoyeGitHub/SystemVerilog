@@ -5,7 +5,6 @@ module mult_mnbit #(parameter M = 4, parameter N = 4)(
 );
 logic [N-1:0][M-1:0] prod_terms;
 logic [N-1:0][M-1:0] sum, [N-1:0] carry;
-logic co0, co1, co2;
 
     carry [0] = 1'b0;
 
@@ -16,7 +15,7 @@ logic co0, co1, co2;
                 and2_delay u_and (
                 .a(a[i]),
                 .b(b[j]),
-                .y(prod_terms [j] [i])
+                .prod_terms(prod_terms [j] [i])
             );
             end
         end
