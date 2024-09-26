@@ -4,8 +4,10 @@ module mult_mnbit #(parameter M = 4, parameter N = 4)(
 	output logic [M+N-1:0] prod
 );
 logic [N-1:0][M-1:0] prod_terms;
-logic [N-1:0] A0, B0, Sum0, A1, B1, Sum1, A2, B2, Sum2;
+logic [N-1:0][M-1:0] sum, [N-1:0] carry;
 logic co0, co1, co2;
+
+    carry [0] = 1'b0;
 
     genvar i, j;
     generate
@@ -22,26 +24,30 @@ logic co0, co1, co2;
     
     assign prod[0] = prod_terms[0][0];
     rca_nbit #M u1(
-        .a({0,prod_terms[]}),
-    )
-    logic [M-1:0][N-1:0] sum, [N-1:0] carry;
+        .a({1'b0, prod_terms[0][M-1:1]}),
+        .b(prod_terms[1][M-1:0]),
+        .cin(carry[0]),
+        .sum(sum[0])
+        .co(carry[1])
+    );
+    assign prod[1] = sum[0][0]
     
 
     gen i;
     generate
         for (i = 1; i < N-1; i++) begin : loopa
             rca_nbit #(M) u_rca (
-                .a(prod_terms [i]),
+                .a({sum[i-1][N-1:1]}),
                 .b(prod_terms [i+1]),
                 .cin(carry [i]),
                 .sum(sum [i]),
                 .co(carry [i+1])
             );
-
+        assign prod[i+1] = sum[i][0];
         end
     endgenerate
 
-    assign  prod[M+N-1: M] = sum[N-2];
+    assign  prod[M+N-1: N] = sum[N-1];
 
 
 
